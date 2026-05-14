@@ -1,0 +1,62 @@
+/* ================================================================
+   AUTÓNOMOS — page styles
+   ================================================================ */
+
+.autonomo-block {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.5rem clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+}
+
+.autonomo-block-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(29, 66, 99, .08);
+    color: var(--color-primary);
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: .375rem;
+    transition: background-color var(--ease), color var(--ease);
+}
+
+.autonomo-block:hover .autonomo-block-icon {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.autonomo-block h3 {
+    grid-column: 2;
+}
+
+.autonomo-block p {
+    grid-column: 2;
+}
+
+.dirigido-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+}
+
+.dirigido-inner .section-header { margin-bottom: 0; }
+
+.dirigido-body p {
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: 1.75;
+    max-width: none;
+}
+
+@media (max-width: 767px) {
+    .dirigido-inner { grid-template-columns: 1fr; }
+    .autonomo-block {
+        grid-template-columns: 1fr;
+    }
+    .autonomo-block-icon { display: none; }
+    .autonomo-block h3, .autonomo-block p { grid-column: 1; }
+}

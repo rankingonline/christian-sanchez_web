@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y citas | Gestoría Christian Sánchez Marratxí</title>
+    <meta name="description" content="Reserva tu cita o escríbenos por WhatsApp. Gestoría en Marratxí para herencias, transferencias, pensiones y autónomos. Te respondemos lo antes posible.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══ NAV ════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav">
+    <div class="nav-inner container">
+        <a href="../../index.html" class="nav-logo" aria-label="Gestoría Christian Sánchez — volver al inicio">
+            <span class="nav-logo-name">Christian Sánchez</span>
+            <span class="nav-logo-tagline">Asesoría fiscal y jurídica</span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../herencias/index.html">Herencias</a></li>
+                <li><a href="../transferencias-vehiculos/index.html">Transferencias</a></li>
+                <li><a href="../pensiones/index.html">Pensiones</a></li>
+                <li><a href="../autonomos/index.html">Autónomos</a></li>
+                <li><a href="../sobre-nosotros/index.html">Nosotros</a></li>
+                <li><a href="../contacto/index.html" aria-current="page">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="../contacto/index.html" class="btn btn-accent nav-cta">Pide cita</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+
+<!-- ══ HERO ═══════════════════════════════════════════════════════ -->
+<section class="page-hero page-hero--contacto" aria-label="Contacto">
+    <div class="page-hero-inner container">
+        <p class="page-hero-eyebrow">Gestoría Christian Sánchez · Contacto</p>
+        <h1>¿En qué podemos ayudarte?</h1>
+        <p class="page-hero-subtitle">Cuéntanos lo que necesitas y te respondemos lo antes posible.</p>
+    </div>
+</section>
+
+<!-- ══ CONTACTO PRINCIPAL ══════════════════════════════════════════ -->
+<section class="section" aria-label="Formulario de contacto y datos">
+    <div class="container">
+        <div class="contacto-grid">
+
+            <!-- Formulario -->
+            <div class="contacto-form-col">
+                <div class="form-header">
+                    <span class="section-eyebrow">Escríbenos</span>
+                    <h2>Cuéntanos tu consulta</h2>
+                    <p>Rellena el formulario y te respondemos en menos de 24 horas en días hábiles.</p>
+                </div>
+
+                <form class="contact-form" novalidate aria-label="Formulario de contacto">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre" class="form-label">Nombre completo <span aria-hidden="true">*</span></label>
+                            <input type="text" id="nombre" name="nombre" class="form-input" required autocomplete="name" placeholder="Tu nombre y apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono" class="form-label">Teléfono de contacto <span aria-hidden="true">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" class="form-input" required autocomplete="tel" placeholder="6XX XXX XXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="email" name="email" class="form-input" autocomplete="email" placeholder="tucorreo@ejemplo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio" class="form-label">¿Para qué servicio nos contactas? <span aria-hidden="true">*</span></label>
+                        <select id="servicio" name="servicio" class="form-select" required>
+                            <option value="" disabled selected>Selecciona un servicio</option>
+                            <option value="herencias">Herencias y cancelaciones de usufructo</option>
+                            <option value="transferencias">Transferencia de vehículos</option>
+                            <option value="pensiones">Pensiones y jubilación</option>
+                            <option value="autonomos">Autónomos</option>
+                            <option value="otro">Otro trámite / consulta general</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="consulta" class="form-label">Cuéntanos brevemente tu consulta</label>
+                        <textarea id="consulta" name="consulta" class="form-textarea" placeholder="Describe tu situación o lo que necesitas saber…"></textarea>
+                    </div>
+
+                    <p class="form-legal">Al enviar este formulario aceptas nuestra <a href="#">política de privacidad</a>. Tus datos se utilizarán únicamente para responder a tu consulta y no serán cedidos a terceros.</p>
+
+                    <button type="submit" class="btn btn-accent btn-lg form-submit">Enviar consulta</button>
+                </form>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="contacto-aside">
+
+                <!-- WhatsApp -->
+                <div class="contacto-channel">
+                    <div class="channel-icon channel-icon--wa" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.849L.057 23.5l5.833-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.898 9.898 0 01-5.047-1.378l-.362-.214-3.741.981.998-3.648-.235-.374A9.862 9.862 0 012.106 12c0-5.46 4.434-9.894 9.894-9.894 5.46 0 9.894 4.434 9.894 9.894 0 5.46-4.434 9.894-9.894 9.894z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="channel-title">También por WhatsApp</h3>
+                        <p class="channel-desc">Si tienes una duda rápida o prefieres escribir directamente, estamos disponibles también por WhatsApp.</p>
+                        <a href="#" class="btn btn-wa" style="margin-top:1rem;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.849L.057 23.5l5.833-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.898 9.898 0 01-5.047-1.378l-.362-.214-3.741.981.998-3.648-.235-.374A9.862 9.862 0 012.106 12c0-5.46 4.434-9.894 9.894-9.894 5.46 0 9.894 4.434 9.894 9.894 0 5.46-4.434 9.894-9.894 9.894z"/></svg>
+                            Escribir por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Datos de contacto -->
+                <div class="contacto-channel">
+                    <div class="channel-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="channel-title">Dónde estamos</h3>
+                        <address class="channel-address">
+                            <p>[ Dirección completa del despacho en Marratxí ]</p>
+                            <p>[ Teléfono ]</p>
+                            <p>[ Horario de atención ]</p>
+                            <p>[ correo@dominio.es ]</p>
+                        </address>
+                    </div>
+                </div>
+
+                <!-- Citas -->
+                <div class="contacto-channel">
+                    <div class="channel-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="channel-title">Reserva tu cita</h3>
+                        <p class="channel-desc">Elige el día y la hora que mejor te vengan. Te confirmamos la cita por correo o WhatsApp.</p>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CIERRE ══════════════════════════════════════════════════════ -->
+<section class="section section--cream" aria-label="Cierre">
+    <div class="container">
+        <div class="cierre-inner">
+            <p class="cierre-text">No tienes que tener todo claro antes de escribirnos. Si tienes un trámite pendiente y no sabes por dónde empezar, cuéntanos la situación y te orientamos.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-logo">Christian Sánchez</p>
+                <p class="footer-brand-desc">Gestoría de referencia en Marratxí desde hace más de 25 años.</p>
+            </div>
+            <div class="footer-nav">
+                <p class="footer-col-title">Servicios</p>
+                <ul>
+                    <li><a href="../herencias/index.html">Herencias</a></li>
+                    <li><a href="../transferencias-vehiculos/index.html">Transferencias de vehículos</a></li>
+                    <li><a href="../pensiones/index.html">Pensiones y jubilación</a></li>
+                    <li><a href="../autonomos/index.html">Autónomos</a></li>
+                    <li><a href="../sobre-nosotros/index.html">Sobre nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p class="footer-col-title">Contacto</p>
+                <address>
+                    <p>[ Dirección, Marratxí ]</p>
+                    <p>[ Teléfono ]</p>
+                    <p>[ Email ]</p>
+                    <p>[ Horario de atención ]</p>
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner container">
+            <p>© 2025 Christian Sánchez · Asesoría fiscal y jurídica · Marratxí, Mallorca</p>
+            <nav aria-label="Legal">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Aviso legal</a>
+                <a href="#">Cookies</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<a href="#" class="whatsapp-float" aria-label="Escríbenos por WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.849L.057 23.5l5.833-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.898 9.898 0 01-5.047-1.378l-.362-.214-3.741.981.998-3.648-.235-.374A9.862 9.862 0 012.106 12c0-5.46 4.434-9.894 9.894-9.894 5.46 0 9.894 4.434 9.894 9.894 0 5.46-4.434 9.894-9.894 9.894z"/></svg>
+    <span>Escríbenos</span>
+</a>
+
+<script>
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+}));
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+}, { passive: true });
+</script>
+</body>
+</html>

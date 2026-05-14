@@ -1,0 +1,142 @@
+/* ================================================================
+   SOBRE NOSOTROS — page styles
+   ================================================================ */
+
+/* Historia section */
+.historia-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+}
+
+.historia-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    margin-top: .5rem;
+}
+
+.historia-text p {
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+.historia-text p + p { margin-top: 1rem; }
+
+.historia-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(160px, 20vw, 220px);
+    aspect-ratio: 1;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    text-align: center;
+    flex-shrink: 0;
+    color: #fff;
+}
+
+.historia-num {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 6vw, 5rem);
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.historia-label {
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    opacity: .9;
+    padding-top: .25rem;
+}
+
+/* Christian section */
+.christian-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+}
+
+.christian-portrait { flex-shrink: 0; }
+
+.portrait-frame {
+    width: clamp(140px, 18vw, 200px);
+    aspect-ratio: 1;
+    background-color: rgba(29, 66, 99, .1);
+    border-radius: var(--r-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(29, 66, 99, .15);
+}
+
+.portrait-initial {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-primary);
+    opacity: .4;
+}
+
+.christian-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+    line-height: 1.1;
+    color: var(--color-dark);
+    margin-bottom: 1.25rem;
+    margin-top: .5rem;
+}
+
+.christian-text p {
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: none;
+}
+
+.christian-text p + p { margin-top: 1rem; }
+
+.christian-quote {
+    margin-top: 1.75rem;
+    padding: 1.5rem 1.75rem;
+    background-color: rgba(29, 66, 99, .05);
+    border-radius: var(--r-md);
+    border-left: none;
+}
+
+.christian-quote p {
+    font-style: italic;
+    color: var(--color-primary);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .historia-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .historia-stat {
+        width: 140px;
+        margin-inline: auto;
+    }
+
+    .christian-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .portrait-frame {
+        width: 120px;
+        margin-inline: auto;
+    }
+}

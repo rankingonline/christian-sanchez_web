@@ -1,0 +1,26 @@
+/* ================================================================
+   TRANSFERENCIAS DE VEHÍCULOS — page styles
+   ================================================================ */
+
+.transferencia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+}
+
+.transferencia-grid .section-header {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.nota-plazo {
+    margin-top: 1.5rem;
+    font-size: .9375rem;
+    color: var(--color-muted);
+    font-style: italic;
+    max-width: none;
+}
+
+@media (max-width: 767px) {
+    .transferencia-grid { grid-template-columns: 1fr; }
+}

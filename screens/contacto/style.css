@@ -1,0 +1,136 @@
+/* ================================================================
+   CONTACTO — page styles
+   ================================================================ */
+
+/* Main layout: form + aside */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+}
+
+/* Form column */
+.form-header { margin-bottom: 2.5rem; }
+
+.form-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+    line-height: 1.1;
+    color: var(--color-dark);
+    margin-top: .5rem;
+    margin-bottom: .875rem;
+}
+
+.form-header p {
+    font-size: 1rem;
+    color: var(--color-muted);
+    max-width: none;
+}
+
+.form-submit { margin-top: .5rem; width: 100%; justify-content: center; }
+
+/* Aside: channel cards */
+.contacto-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 6.5rem;
+}
+
+.contacto-channel {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 1rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
+    padding: 1.5rem;
+    align-items: start;
+}
+
+.channel-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: rgba(29, 66, 99, .07);
+    color: var(--color-primary);
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: .125rem;
+}
+
+.channel-icon--wa {
+    background-color: rgba(37, 211, 102, .12);
+    color: #1da853;
+}
+
+.channel-title {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    color: var(--color-dark);
+    margin-bottom: .375rem;
+}
+
+.channel-desc {
+    font-size: .9rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+    max-width: none;
+}
+
+.channel-address {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+}
+
+.channel-address p {
+    font-size: .9rem;
+    color: var(--color-muted);
+    max-width: none;
+    line-height: 1.5;
+}
+
+/* WhatsApp inline button */
+.btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem 1.25rem;
+    border-radius: var(--r-pill);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    font-weight: 500;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--ease), box-shadow var(--ease);
+}
+
+.btn-wa:hover {
+    background-color: #1da853;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, .3);
+}
+
+/* Cierre */
+.cierre-inner { max-width: 680px; margin-inline: auto; text-align: center; }
+
+.cierre-text {
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: none;
+}
+
+/* Responsive */
+@media (max-width: 899px) {
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+    .contacto-aside { position: static; }
+}
