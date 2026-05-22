@@ -1,0 +1,93 @@
+/* ================================================================
+   PLUSVALÍAS MUNICIPALES — page styles
+   ================================================================ */
+
+.precio-plusvalia {
+    display: flex;
+    justify-content: center;
+}
+
+.precio-card {
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-lg);
+    padding: clamp(2rem, 4vw, 3rem);
+    box-shadow: var(--sh-md);
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.precio-card::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 4px;
+    background: var(--gradient-brand);
+}
+
+.precio-amount {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 7vw, 5rem);
+    line-height: 1;
+    color: var(--color-primary);
+    margin-bottom: .25rem;
+    max-width: none;
+}
+
+.precio-currency {
+    font-size: .55em;
+    color: var(--color-accent);
+    margin-left: .15rem;
+    vertical-align: top;
+}
+
+.precio-label {
+    font-size: 1rem;
+    color: var(--color-muted);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+    max-width: none;
+}
+
+.precio-features {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+}
+
+.precio-features li {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: .75rem;
+    align-items: start;
+    font-size: .9375rem;
+    color: var(--color-text);
+    line-height: 1.55;
+}
+
+.precio-features li::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    margin-top: .55rem;
+}
+
+.precio-nota {
+    font-size: .8125rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+    text-align: left;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+    max-width: none;
+}

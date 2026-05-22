@@ -22,6 +22,7 @@
     --svc-transferencias: #0B60CD;
     --svc-pensiones: #2F2885;
     --svc-autonomos: #0891B2;
+    --svc-plusvalias: #1D5FA8;
 
     /* Type */
     --font-serif: 'DM Serif Display', Georgia, serif;
@@ -843,6 +844,11 @@ p {
 .svc-row--autonomos:hover .svc-num {
     opacity: 1;
     color: var(--svc-autonomos);
+}
+
+.svc-row--plusvalias:hover .svc-num {
+    opacity: 1;
+    color: var(--svc-plusvalias);
 }
 
 /* Body: title + desc */
