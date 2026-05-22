@@ -2,8 +2,198 @@
    PENSIONES — page styles
    ================================================================ */
 
+/* ── Estudio: bullets transformados en grid de cards ──────────── */
+.feature-list--large {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
 .feature-list--large li {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
+    padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    display: block;
+    grid-template-columns: none;
+    transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    box-shadow: var(--sh-sm);
+}
+
+.feature-list--large li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 1.25rem;
+    inset-block-start: 1.35rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, var(--color-accent), var(--color-primary));
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(11, 96, 205, .2);
+}
+
+.feature-list--large li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sh-md);
+    border-color: rgba(11, 96, 205, .25);
+}
+
+@media (max-width: 767px) {
+    .feature-list--large { grid-template-columns: 1fr; }
+}
+
+/* ── Tipos de jubilación: service-blocks como cards numeradas ── */
+.pension-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    counter-reset: pension-type;
+}
+
+.pension-type {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    box-shadow: var(--sh-sm);
+    counter-increment: pension-type;
+    overflow: hidden;
+    transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+}
+
+.pension-type::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+    opacity: .55;
+    transition: opacity var(--ease);
+}
+
+.pension-type::after {
+    content: counter(pension-type, decimal-leading-zero);
+    position: absolute;
+    inset-inline-end: 1.25rem;
+    inset-block-start: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--color-accent);
+    opacity: .7;
+}
+
+.pension-type:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+    border-color: rgba(11, 96, 205, .25);
+}
+
+.pension-type:hover::before { opacity: 1; }
+
+.pension-type h3 {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    line-height: 1.2;
+    color: var(--color-primary);
+    margin-bottom: .875rem;
+    padding-right: 2.5rem;
+}
+
+.pension-type p {
+    font-size: .9375rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.pension-type p + p { margin-top: .75rem; }
+
+@media (max-width: 899px) {
+    .pension-types { grid-template-columns: 1fr; }
+}
+
+/* ── Por qué planificar: layout texto + highlight card ─────────── */
+.planificar-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.planificar-text p {
     font-size: 1.0625rem;
-    line-height: 1.75;
-    padding-block: .375rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+.planificar-text p + p { margin-top: 1.25rem; }
+
+.planificar-highlight {
+    background: var(--gradient-brand);
+    color: #fff;
+    border-radius: var(--r-lg);
+    padding: clamp(2rem, 4vw, 2.75rem);
+    box-shadow: var(--sh-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.planificar-highlight::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -40%;
+    inset-inline-end: -25%;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, .35), transparent 70%);
+    pointer-events: none;
+}
+
+.planificar-highlight-number {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 7vw, 5rem);
+    line-height: 1;
+    margin-bottom: .5rem;
+    background: linear-gradient(135deg, #fff, var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.planificar-highlight-label {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .7);
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.planificar-highlight-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .88);
+    max-width: none;
+    position: relative;
+}
+
+@media (max-width: 899px) {
+    .planificar-grid { grid-template-columns: 1fr; }
 }

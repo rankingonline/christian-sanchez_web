@@ -168,7 +168,27 @@
             <!-- Widget de Calendly: integración pendiente -->
             <!-- PENDIENTE: confirmar con cliente la cuenta de Calendly a conectar -->
             <div id="calendly-widget" class="calendly-placeholder" aria-live="polite">
-                <p class="calendly-placeholder-text">Cargando disponibilidad...</p>
+                <div class="calendly-mock" aria-hidden="true">
+                    <div class="calendly-mock-header">
+                        <span class="calendly-mock-month">Mes</span>
+                        <div class="calendly-mock-nav">
+                            <span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="calendly-mock-weekdays">
+                        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                    </div>
+                    <div class="calendly-mock-grid">
+                        <span></span><span></span><span class="is-day"></span><span class="is-day"></span><span class="is-day is-active"></span><span></span><span></span>
+                        <span class="is-day"></span><span class="is-day is-active"></span><span class="is-day"></span><span class="is-day is-active"></span><span class="is-day"></span><span></span><span></span>
+                        <span class="is-day is-active"></span><span class="is-day"></span><span class="is-day is-active"></span><span class="is-day"></span><span class="is-day is-active"></span><span></span><span></span>
+                        <span class="is-day"></span><span class="is-day is-active"></span><span class="is-day"></span><span class="is-day is-active"></span><span class="is-day"></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="calendly-loading">
+                    <span class="calendly-spinner" aria-hidden="true"></span>
+                    <p class="calendly-placeholder-text">Cargando disponibilidad...</p>
+                </div>
             </div>
         </div>
     </div>
@@ -177,8 +197,20 @@
 <!-- ══ CIERRE ══════════════════════════════════════════════════════ -->
 <section class="section" aria-label="Cierre">
     <div class="container">
-        <div class="cierre-inner">
-            <p class="cierre-text">No hace falta tenerlo todo claro antes de escribirnos. Si tienes un trámite pendiente y no sabes por dónde empezar, cuéntanos la situación y te orientamos.</p>
+        <div class="cierre-card">
+            <span class="cierre-quote" aria-hidden="true">"</span>
+            <div class="cierre-body">
+                <p class="cierre-eyebrow">Si tienes dudas</p>
+                <p class="cierre-text">No hace falta tenerlo todo claro antes de escribirnos. Si tienes un trámite pendiente y no sabes por dónde empezar, cuéntanos la situación y <strong>te orientamos sin compromiso</strong>.</p>
+                <div class="cierre-actions">
+                    <a href="#" class="btn btn-accent">Pide cita</a>
+                    <!-- PENDIENTE: confirmar con cliente el número de WhatsApp -->
+                    <a href="https://wa.me/34XXXXXXXXX" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.849L.057 23.5l5.833-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.898 9.898 0 01-5.047-1.378l-.362-.214-3.741.981.998-3.648-.235-.374A9.862 9.862 0 012.106 12c0-5.46 4.434-9.894 9.894-9.894 5.46 0 9.894 4.434 9.894 9.894 0 5.46-4.434 9.894-9.894 9.894z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
