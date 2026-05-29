@@ -363,10 +363,8 @@ p          { max-width: 65ch; line-height: 1.7; }
 .feature-list { display: flex; flex-direction: column; gap: .875rem; }
 
 .feature-list li {
-    display: grid;
-    grid-template-columns: 1.5rem 1fr;
-    gap: .75rem;
-    align-items: start;
+    position: relative;
+    padding-left: 1.5rem;
     font-size: 1rem;
     color: var(--color-muted);
     line-height: 1.65;
@@ -374,13 +372,13 @@ p          { max-width: 65ch; line-height: 1.7; }
 
 .feature-list li::before {
     content: '';
-    display: block;
+    position: absolute;
+    left: 0;
+    top: .55em;
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background-color: var(--color-accent);
-    margin-top: .5rem;
-    flex-shrink: 0;
 }
 
 /* ── 11. Service blocks (titled paragraphs) ─────────────────────── */
@@ -814,7 +812,7 @@ p          { max-width: 65ch; line-height: 1.7; }
 /* ── 22. Situaciones cards (¿Reconoces alguna...?) ──────────────── */
 .situaciones-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
 }
 
@@ -912,10 +910,17 @@ p          { max-width: 65ch; line-height: 1.7; }
     .alerta-grid { grid-template-columns: 1fr; }
 }
 
+/* ── 24b. CTA intermedio entre secciones ───────────────────────── */
+.section-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(2rem, 4vw, 3rem);
+}
+
 /* ── 25. Servicios relacionados ─────────────────────────────────── */
 .relacionados-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1.5rem;
 }
 

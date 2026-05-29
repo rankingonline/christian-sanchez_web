@@ -52,6 +52,29 @@
     max-width: none;
 }
 
+/* Servicios en 2 columnas */
+@media (min-width: 768px) {
+    .service-blocks--2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .service-blocks--2col .service-block:nth-child(odd) {
+        border-right: 1px solid var(--color-border);
+        padding-right: clamp(1.5rem, 3vw, 3rem);
+    }
+    .service-blocks--2col .service-block:nth-child(even) {
+        padding-left: clamp(1.5rem, 3vw, 3rem);
+    }
+    .service-blocks--2col .service-block:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+}
+
+/* "Cámbiate" — texto a ancho completo */
+[aria-labelledby="cambiarte-title"] .intro-text p {
+    max-width: none;
+}
+
 @media (max-width: 767px) {
     .dirigido-inner { grid-template-columns: 1fr; }
     .autonomo-block {

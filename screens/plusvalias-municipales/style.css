@@ -63,10 +63,8 @@
 }
 
 .precio-features li {
-    display: grid;
-    grid-template-columns: 1.25rem 1fr;
-    gap: .75rem;
-    align-items: start;
+    position: relative;
+    padding-left: 1.25rem;
     font-size: .9375rem;
     color: var(--color-text);
     line-height: 1.55;
@@ -74,13 +72,17 @@
 
 .precio-features li::before {
     content: '';
-    display: block;
+    position: absolute;
+    left: 0;
+    top: .45em;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: var(--color-accent);
-    margin-top: .55rem;
 }
+
+/* Intro text a ancho completo */
+.intro-text p { max-width: none; }
 
 .precio-nota {
     font-size: .8125rem;

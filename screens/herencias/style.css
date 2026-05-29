@@ -2,6 +2,9 @@
    HERENCIAS — page styles
    ================================================================ */
 
+/* Intro text a ancho completo */
+.intro-text p { max-width: none; }
+
 .adicional-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
