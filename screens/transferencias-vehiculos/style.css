@@ -9,8 +9,13 @@
     align-items: start;
 }
 
-.transferencia-grid .section-header {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+.transferencia-col-title {
+    font-size: .8125rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
 }
 
 .nota-plazo {
