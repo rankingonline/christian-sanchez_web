@@ -766,21 +766,92 @@ p          { max-width: 65ch; line-height: 1.7; }
 
 /* ── 19. Responsive ─────────────────────────────────────────────── */
 @media (max-width: 899px) {
+
+    /*
+     * Z-INDEX FIX: .nav creates a stacking context (position:fixed, z-index:100).
+     * .nav-links (overlay, z:99) is painted above normal-flow children inside that
+     * context, hiding the logo and hamburger behind it. Giving logo and hamburger
+     * explicit z-index as flex-items of .nav-inner lifts them above the overlay
+     * within .nav's stacking context (100 > 99).
+     *
+     * SAFARI FIX: backdrop-filter on .nav--scrolled creates a containing-block for
+     * position:fixed descendants in WebKit, constraining the overlay to the nav bar
+     * height instead of the viewport. Remove it when the overlay is open.
+     */
+
+    /* Remove backdrop-filter when menu is open (Safari fixed-position bug) */
+    .nav:has(.nav-hamburger[aria-expanded="true"]) {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: var(--color-dark);
+        box-shadow: none;
+        padding-block: 1.125rem;
+    }
+
+    /* Logo and X always float above the overlay (z:99) */
+    .nav-logo      { z-index: 100; }
+    .nav-hamburger { display: flex; z-index: 100; }
+
+    /* Full-screen overlay */
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: stretch;
         position: fixed;
         inset: 0;
-        background-color: rgba(47,40,133,.99);
-        padding: 5.5rem 2rem 2rem;
-        gap: .25rem;
-        z-index: calc(var(--z-nav) - 1);
+        background-color: var(--color-dark);
+        padding-top: 5.5rem;
+        padding-inline: 1.75rem;
+        padding-bottom: 3rem;
+        gap: 0;
+        z-index: 99;
         overflow-y: auto;
     }
-    .nav-links.is-open { display: flex; }
-    .nav-links a { font-size: 1.375rem; padding: .875rem 1rem; color: rgba(245,240,232,.85); }
+
+    .nav-links.is-open {
+        display: flex;
+        animation: navOverlayIn .22s ease both;
+    }
+
+    @keyframes navOverlayIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Link rows with dividers */
+    .nav-links li {
+        border-bottom: 1px solid rgba(245,240,232,.1);
+    }
+    .nav-links li:first-child {
+        border-top: 1px solid rgba(245,240,232,.1);
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.125rem 0;
+        color: rgba(245,240,232,.75);
+        background: none !important;
+        border-radius: 0;
+        transition: color var(--ease);
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a[aria-current="page"] { color: var(--color-accent); }
+
+    /* Hamburger → X animation */
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
     .nav-cta { display: none; }
-    .nav-hamburger { display: flex; }
 
     .value-cards  { grid-template-columns: 1fr 1fr; }
     .team-grid    { grid-template-columns: 1fr; }
