@@ -574,6 +574,14 @@ p          { max-width: 65ch; line-height: 1.7; }
     overflow: hidden;
 }
 
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
 .team-photo::after {
     content: '';
     position: absolute;
