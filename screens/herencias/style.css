@@ -5,15 +5,6 @@
 /* Intro text a ancho completo */
 .intro-text p { max-width: none; }
 
-.adicional-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 6vw, 6rem);
-    align-items: start;
-}
-
-.adicional-inner .section-header { margin-bottom: 0; }
-
 .adicional-body p {
     font-size: 1.0625rem;
     color: var(--color-muted);
@@ -22,7 +13,3 @@
 }
 
 .adicional-body p + p { margin-top: 1rem; }
-
-@media (max-width: 767px) {
-    .adicional-inner { grid-template-columns: 1fr; }
-}
