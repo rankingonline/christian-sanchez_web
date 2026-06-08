@@ -39,10 +39,10 @@
 }
 
 .precio-currency {
-    font-size: .55em;
+    font-size: 1em;
     color: var(--color-accent);
     margin-left: .15rem;
-    vertical-align: top;
+    vertical-align: baseline;
 }
 
 .precio-label {
