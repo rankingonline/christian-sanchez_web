@@ -1041,17 +1041,19 @@ p          { max-width: 65ch; line-height: 1.7; }
     transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
 
-/* Acento superior con degradado de marca */
+/* Acento superior — secuencia de colores igual que honorarios */
 .relacionado-card::before {
     content: '';
     position: absolute;
     inset-block-start: 0;
     inset-inline: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
-    opacity: .55;
-    transition: opacity var(--ease), height var(--ease);
+    background: var(--color-primary);
+    transition: height var(--ease);
 }
+
+.relacionado-card:nth-child(2)::before { background: var(--color-dark); }
+.relacionado-card:nth-child(3)::before { background: var(--color-accent); }
 
 .relacionado-card:hover {
     transform: translateY(-4px);
@@ -1059,10 +1061,7 @@ p          { max-width: 65ch; line-height: 1.7; }
     border-color: rgba(11, 96, 205, .25);
 }
 
-.relacionado-card:hover::before {
-    opacity: 1;
-    height: 4px;
-}
+.relacionado-card:hover::before { height: 4px; }
 
 .relacionado-card h3 {
     font-family: var(--font-serif);
@@ -1072,6 +1071,9 @@ p          { max-width: 65ch; line-height: 1.7; }
     margin-bottom: .75rem;
 }
 
+.relacionado-card:nth-child(2) h3 { color: var(--color-dark); }
+.relacionado-card:nth-child(3) h3 { color: var(--color-accent); }
+
 .relacionado-card a.relacionado-card-title {
     color: var(--color-primary);
     text-decoration: none;
@@ -1080,6 +1082,9 @@ p          { max-width: 65ch; line-height: 1.7; }
     gap: .5rem;
     transition: color var(--ease);
 }
+
+.relacionado-card:nth-child(2) a.relacionado-card-title { color: var(--color-dark); }
+.relacionado-card:nth-child(3) a.relacionado-card-title { color: var(--color-accent); }
 
 .relacionado-card a.relacionado-card-title::after {
     content: '→';
