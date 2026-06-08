@@ -81,6 +81,11 @@
     background-color: var(--color-accent);
 }
 
+/* Grid 2x2 para los 4 pasos del proceso */
+.process-list {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 /* Intro text a ancho completo */
 .intro-text p { max-width: none; }
 
