@@ -160,6 +160,18 @@ p          { max-width: 65ch; line-height: 1.7; }
     box-shadow: var(--sh-md);
 }
 
+.btn-outline-accent {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn-outline-accent:hover {
+    background-color: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(34, 211, 238, 0.3);
+}
+
 /* ── 6. Navigation ──────────────────────────────────────────────── */
 .nav {
     position: fixed;
