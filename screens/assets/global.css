@@ -150,14 +150,13 @@ p          { max-width: 65ch; line-height: 1.7; }
 }
 
 .btn-outline-primary {
-    background-color: transparent;
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--gradient-brand);
+    color: #fff;
+    border-color: transparent;
 }
 .btn-outline-primary:hover {
-    background: var(--gradient-brand);
+    background: linear-gradient(135deg, #0d6fe0, #3830a0);
     border-color: transparent;
-    color: #fff;
     box-shadow: var(--sh-md);
 }
 
@@ -324,21 +323,29 @@ p          { max-width: 65ch; line-height: 1.7; }
 
 /* ── 9. Numbered process list ───────────────────────────────────── */
 .process-list {
-    border-top: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     counter-reset: process;
 }
 
 .process-item {
-    display: grid;
-    grid-template-columns: 3.5rem 1fr;
-    gap: clamp(1rem, 2vw, 2rem);
-    padding-block: clamp(1.5rem, 3vw, 2.25rem);
-    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: .875rem;
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-sm);
     counter-increment: process;
-    transition: background-color var(--ease);
+    transition: box-shadow var(--ease), transform var(--ease);
 }
 
-.process-item:hover { background-color: rgba(11,96,205,.025); }
+.process-item:hover {
+    box-shadow: var(--sh-md);
+    transform: translateY(-3px);
+}
 
 .process-num {
     font-family: var(--font-sans);
@@ -346,8 +353,7 @@ p          { max-width: 65ch; line-height: 1.7; }
     font-weight: 600;
     letter-spacing: .1em;
     color: var(--color-accent);
-    padding-top: .3rem;
-    opacity: .7;
+    opacity: .8;
 }
 
 .process-num::before { content: counter(process, decimal-leading-zero); }
@@ -357,6 +363,14 @@ p          { max-width: 65ch; line-height: 1.7; }
     color: var(--color-muted);
     line-height: 1.7;
     max-width: none;
+}
+
+@media (max-width: 899px) {
+    .process-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 599px) {
+    .process-list { grid-template-columns: 1fr; }
 }
 
 /* ── 10. Feature / bullet list ──────────────────────────────────── */
@@ -415,6 +429,7 @@ p          { max-width: 65ch; line-height: 1.7; }
     box-shadow: var(--sh-sm);
     overflow: hidden;
     max-width: 760px;
+    margin-inline: auto;
     transition: box-shadow var(--ease), transform var(--ease);
 }
 
@@ -557,6 +572,14 @@ p          { max-width: 65ch; line-height: 1.7; }
     border-bottom: 1px solid var(--color-border);
     position: relative;
     overflow: hidden;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 .team-photo::after {
@@ -766,21 +789,92 @@ p          { max-width: 65ch; line-height: 1.7; }
 
 /* ── 19. Responsive ─────────────────────────────────────────────── */
 @media (max-width: 899px) {
+
+    /*
+     * Z-INDEX FIX: .nav creates a stacking context (position:fixed, z-index:100).
+     * .nav-links (overlay, z:99) is painted above normal-flow children inside that
+     * context, hiding the logo and hamburger behind it. Giving logo and hamburger
+     * explicit z-index as flex-items of .nav-inner lifts them above the overlay
+     * within .nav's stacking context (100 > 99).
+     *
+     * SAFARI FIX: backdrop-filter on .nav--scrolled creates a containing-block for
+     * position:fixed descendants in WebKit, constraining the overlay to the nav bar
+     * height instead of the viewport. Remove it when the overlay is open.
+     */
+
+    /* Remove backdrop-filter when menu is open (Safari fixed-position bug) */
+    .nav:has(.nav-hamburger[aria-expanded="true"]) {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: var(--color-dark);
+        box-shadow: none;
+        padding-block: 1.125rem;
+    }
+
+    /* Logo and X always float above the overlay (z:99) */
+    .nav-logo      { z-index: 100; }
+    .nav-hamburger { display: flex; z-index: 100; }
+
+    /* Full-screen overlay */
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: stretch;
         position: fixed;
         inset: 0;
-        background-color: rgba(47,40,133,.99);
-        padding: 5.5rem 2rem 2rem;
-        gap: .25rem;
-        z-index: calc(var(--z-nav) - 1);
+        background-color: var(--color-dark);
+        padding-top: 5.5rem;
+        padding-inline: 1.75rem;
+        padding-bottom: 3rem;
+        gap: 0;
+        z-index: 99;
         overflow-y: auto;
     }
-    .nav-links.is-open { display: flex; }
-    .nav-links a { font-size: 1.375rem; padding: .875rem 1rem; color: rgba(245,240,232,.85); }
+
+    .nav-links.is-open {
+        display: flex;
+        animation: navOverlayIn .22s ease both;
+    }
+
+    @keyframes navOverlayIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Link rows with dividers */
+    .nav-links li {
+        border-bottom: 1px solid rgba(245,240,232,.1);
+    }
+    .nav-links li:first-child {
+        border-top: 1px solid rgba(245,240,232,.1);
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 1.125rem 0;
+        color: rgba(245,240,232,.75);
+        background: none !important;
+        border-radius: 0;
+        transition: color var(--ease);
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a[aria-current="page"] { color: var(--color-accent); }
+
+    /* Hamburger → X animation */
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
     .nav-cta { display: none; }
-    .nav-hamburger { display: flex; }
 
     .value-cards  { grid-template-columns: 1fr 1fr; }
     .team-grid    { grid-template-columns: 1fr; }
@@ -865,24 +959,27 @@ p          { max-width: 65ch; line-height: 1.7; }
 
 /* ── 24. Alerta / consecuencias block ───────────────────────────── */
 .alerta-intro {
-    border-left: 3px solid var(--color-accent);
-    padding-left: 1.5rem;
-    margin-bottom: 2.5rem;
+    background: rgba(34, 211, 238, .06);
+    border: 1px solid rgba(34, 211, 238, .22);
+    border-radius: var(--r-md);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
 }
 
 .alerta-intro p {
     font-size: 1rem;
     color: var(--color-muted);
     line-height: 1.75;
-    max-width: 70ch;
+    max-width: none;
 }
 
-.alerta-intro p + p { margin-top: 1rem; }
+.alerta-intro p + p { margin-top: .875rem; }
 
 .alerta-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    align-items: stretch;
 }
 
 .alerta-card {
@@ -890,7 +987,13 @@ p          { max-width: 65ch; line-height: 1.7; }
     border-radius: var(--r-md);
     padding: clamp(1.5rem, 3vw, 2rem);
     border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
 }
+
+.alerta-card:nth-child(2) { border-top-color: var(--color-dark); }
+.alerta-card:nth-child(3) { border-top-color: var(--color-accent); }
 
 .alerta-card h3 {
     font-family: var(--font-serif);
@@ -899,6 +1002,9 @@ p          { max-width: 65ch; line-height: 1.7; }
     margin-bottom: .75rem;
     line-height: 1.2;
 }
+
+.alerta-card:nth-child(2) h3 { color: var(--color-dark); }
+.alerta-card:nth-child(3) h3 { color: var(--color-accent); }
 
 .alerta-card p {
     font-size: .9375rem;
@@ -1060,52 +1166,191 @@ details[open] > .faq-question { color: var(--color-primary); }
 
 .faq-answer p + p { margin-top: .75rem; }
 
-/* ── Para quién es — card list ─────────────────────────────────── */
+/* ── Para quién es — 2-col card grid ───────────────────────────── */
 .paraquien-list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .75rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
 }
 
 .paraquien-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+    padding: 1.5rem;
     background: #fff;
-    border-radius: .5rem;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    border-radius: var(--r-md);
+    border-top: 3px solid var(--color-primary);
+    box-shadow: var(--sh-sm);
+    transition: box-shadow var(--ease), transform var(--ease);
+}
+
+.paraquien-item:hover {
+    box-shadow: var(--sh-md);
+    transform: translateY(-3px);
 }
 
 .paraquien-who,
 .paraquien-what {
-    padding: 1.125rem 1.375rem;
     font-size: .9375rem;
     line-height: 1.6;
     margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .paraquien-who {
     font-weight: 600;
     color: var(--color-text);
-    border-left: 3px solid var(--color-primary);
-    background: #fff;
 }
 
 .paraquien-what {
     color: var(--color-muted);
-    background: var(--color-cream);
-    border-left: 1px solid var(--color-border);
 }
 
-@media (max-width: 640px) {
-    .paraquien-item {
-        grid-template-columns: 1fr;
-    }
+/* Center last card when total is odd */
+.paraquien-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.625rem);
+    margin-inline: auto;
+}
 
-    .paraquien-what {
-        border-left: 3px solid var(--color-accent);
-        border-top: none;
-    }
+@media (max-width: 639px) {
+    .paraquien-list { grid-template-columns: 1fr; }
+    .paraquien-item:last-child:nth-child(odd) { max-width: 100%; grid-column: auto; }
+}
+
+/* ── Feature list — 2-column large variant ──────────────────────── */
+.feature-list--large {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .875rem;
+}
+
+.feature-list--large li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
+}
+
+@media (max-width: 599px) {
+    .feature-list--large { grid-template-columns: 1fr; }
+    .feature-list--large li:last-child:nth-child(odd) { max-width: 100%; }
+}
+
+/* ── Section header — compact variant ───────────────────────────── */
+.section-header--compact {
+    margin-bottom: 1.5rem;
+}
+
+/* ── Intro two-column layout ────────────────────────────────────── */
+.intro-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.intro-two-col-img {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.intro-two-col-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .intro-two-col { grid-template-columns: 1fr; }
+    .intro-two-col-img { order: -1; aspect-ratio: 16/9; }
+}
+
+/* ── Precio / Honorarios — factors grid ─────────────────────────── */
+.precio-factors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.precio-factor-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: var(--r-md);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+    box-shadow: var(--sh-sm);
+}
+
+.precio-factor-card:nth-child(2) { border-top-color: var(--color-dark); }
+.precio-factor-card:nth-child(3) { border-top-color: var(--color-accent); }
+
+.precio-factor-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: rgba(11, 96, 205, .08);
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.precio-factor-card:nth-child(2) .precio-factor-icon {
+    background-color: rgba(47, 40, 133, .08);
+    color: var(--color-dark);
+}
+
+.precio-factor-card:nth-child(3) .precio-factor-icon {
+    background-color: rgba(34, 211, 238, .1);
+    color: var(--color-accent);
+}
+
+.precio-factor-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+.precio-factor-card:nth-child(2) h3 { color: var(--color-dark); }
+.precio-factor-card:nth-child(3) h3 { color: var(--color-accent); }
+
+.precio-factor-card p {
+    font-size: .9375rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+    max-width: none;
+}
+
+.precio-cta-note {
+    background: var(--color-cream);
+    border-radius: var(--r-md);
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.precio-cta-note p {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 55ch;
+}
+
+@media (max-width: 767px) {
+    .precio-factors { grid-template-columns: 1fr; }
+    .precio-cta-note { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
 }
