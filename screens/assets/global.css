@@ -1078,7 +1078,7 @@ p          { max-width: 65ch; line-height: 1.7; }
     color: var(--color-primary);
     text-decoration: none;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: .5rem;
     transition: color var(--ease);
 }
