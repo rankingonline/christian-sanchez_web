@@ -73,7 +73,7 @@ address   { font-style: normal; }
     font-weight: 600;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-primary);
     margin-bottom: 1rem;
 }
 
