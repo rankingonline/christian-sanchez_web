@@ -1,0 +1,179 @@
+/* ================================================================
+   BLOG ARTICLE — Jubilación anticipada en España
+   ================================================================ */
+
+/* ── Hero — shorter variant for articles ────────────────────────── */
+.page-hero--article {
+    min-height: 42vh;
+    padding-bottom: 1rem;
+}
+
+.page-hero--split .page-hero-inner {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .8125rem;
+    color: rgba(245, 240, 232, .5);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+    color: rgba(245, 240, 232, .75);
+    transition: color var(--ease);
+}
+
+.breadcrumb a:hover { color: var(--color-accent); }
+
+/* ── Hero — split layout: text left, image right ─────────────────── */
+.page-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+.page-hero-grid h1 {
+    max-width: none;
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.page-hero-grid .page-hero-subtitle {
+    max-width: 48ch;
+    margin-bottom: 0;
+}
+
+.page-hero-media {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--sh-lg);
+    aspect-ratio: 3/4;
+}
+
+.page-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 899px) {
+    .page-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .page-hero-grid h1 { font-size: clamp(2.25rem, 7vw, 3rem); }
+    .page-hero-media { aspect-ratio: 16/9; }
+}
+
+/* ── Readable column for narrative sections ─────────────────────── */
+.article-container {
+    max-width: 720px;
+}
+
+/* ── Tipos: voluntaria vs. involuntaria comparison cards ─────────── */
+.tipos-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tipo-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: var(--r-md);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    box-shadow: var(--sh-sm);
+}
+
+.tipo-card:nth-child(2) { border-top-color: var(--color-dark); }
+
+.tipo-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: .875rem;
+}
+
+.tipo-card:nth-child(2) h3 { color: var(--color-dark); }
+
+.tipo-card p {
+    font-size: .9375rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+}
+
+.tipo-card .feature-list { gap: .75rem; }
+
+@media (max-width: 767px) {
+    .tipos-comparison { grid-template-columns: 1fr; }
+}
+
+/* ── Coeficientes reductores — data table ────────────────────────── */
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--r-md);
+}
+
+.reduction-table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: .875rem;
+}
+
+.reduction-table th,
+.reduction-table td {
+    padding: .75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.reduction-table thead th {
+    background: var(--color-primary);
+    color: var(--color-cream);
+    font-weight: 600;
+    font-size: .8125rem;
+}
+
+.reduction-table tbody th,
+.reduction-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    background: var(--color-cream);
+}
+
+.reduction-table tbody tr:nth-child(even) { background: rgba(11, 96, 205, .04); }
+.reduction-table tbody tr:nth-child(even) td:first-child { background: var(--color-cream); }
+.reduction-table tbody tr:hover { background: rgba(34, 211, 238, .1); }
+.reduction-table tbody tr:hover td:first-child { background: rgba(34, 211, 238, .16); }
+
+.table-caption {
+    font-size: .9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 2rem;
+    margin-bottom: -.5rem;
+}
+
+/* ── Callout note ─────────────────────────────────────────────────── */
+.callout {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-cream);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--r-sm);
+    font-size: .9375rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+}
+
+.callout strong { color: var(--color-text); }
